@@ -1,0 +1,23 @@
+{
+  "name": "",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "lerna": "^3.16.4",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.2"
+  },
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {
+    "bootstrap": "lerna bootstrap --hoist",
+    "build": "lerna run build",
+    "publish": "npm run-script build && lerna publish",
+    "test": "jest --passWithNoTests"
+  },
+  "keywords": [],
+  "author": "Wojciech Tałałaj",
+  "license": "MIT",
+  "description": ""
+}

@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "api",
+      "cwd": "packages-server/api",
+      "kill_timeout": 3000,
+      "restart_delay": 3000,
+      "script": "npm",
+      "args": "run start",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}

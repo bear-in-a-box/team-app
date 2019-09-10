@@ -1,0 +1,29 @@
+{
+  "name": "@team-app/api",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "main": "lib/api.js",
+  "directories": {
+    "lib": "lib",
+    "test": "./src/*.test.ts"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "start": "node lib/api.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "cote": "^0.20.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.4",
+    "@types/socket.io": "^2.1.2"
+  }
+}
