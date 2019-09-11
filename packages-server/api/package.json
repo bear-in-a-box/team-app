@@ -1,23 +1,17 @@
 {
   "name": "@team-app/api",
   "version": "0.0.0",
-  "description": "> TODO: description",
   "main": "lib/api.js",
-  "directories": {
-    "lib": "lib",
-    "test": "./src/*.test.ts"
-  },
-  "files": [
-    "lib"
-  ],
+  "types": "lib/api.d.ts",
   "scripts": {
+    "clean": "rm -rf \"./{lib,node_modules}\"",
     "prepublish": "npm run build",
     "build": "tsc",
     "start": "node lib/api.js",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "cote": "^0.20.1",
+    "@team-app/shared-utils": "^0.0.0",
     "express": "^4.17.1",
     "socket.io": "^2.2.0"
   },

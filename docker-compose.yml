@@ -7,9 +7,38 @@ services:
       dockerfile: client.Dockerfile
     ports:
       - 80:80
+    networks:
+      - public
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - server-parts
+    ports:
+      - 6379:6379
+    restart: always
+    volumes:
+      - redis-data:/data
   server:
     build:
       context: .
       dockerfile: server.Dockerfile
+    environment:
+      - API_PORT=3000
     ports:
       - 3000:3000
+    networks:
+      - public
+      - server-parts
+    depends_on:
+      - redis
+
+networks:
+  public:
+  server-parts:
+    driver: bridge
+    internal: true
+
+volumes:
+  redis-data:

@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "team-app",
   "private": true,
   "devDependencies": {
     "@types/jest": "^24.0.18",

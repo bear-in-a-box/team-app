@@ -3,20 +3,26 @@
     "target": "es2017",
     "module": "commonjs",
     "lib": ["esnext"],
-    "declaration": true,
     "sourceMap": true,
     "removeComments": true,
+    // "noEmit": true,
     "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "declaration": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
     // "moduleResolution": "node",
     // "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "@team-app/*": ["*/src"]
+    }
   },
   "exclude": [
     "node_modules",
+    "lib",
     "**/*.spec.ts"
   ]
 }

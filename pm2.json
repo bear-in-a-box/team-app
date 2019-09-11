@@ -3,10 +3,11 @@
     {
       "name": "api",
       "cwd": "packages-server/api",
+      "script": "./lib/api.js",
       "kill_timeout": 3000,
       "restart_delay": 3000,
-      "script": "npm",
-      "args": "run start",
+      "exec_mode": "cluster_mode",
+      "instances": 2,
       "env": {
         "NODE_ENV": "development"
       },

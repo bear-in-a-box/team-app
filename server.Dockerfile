@@ -13,9 +13,6 @@ RUN lerna run test
 RUN yarn config set unsafe-perm false
 RUN npm config set unsafe-perm false
 
-ENV API_PORT 3000
-ENV NODE_ENV production
-
 EXPOSE 3000
 
 CMD [ "pm2-runtime", "start", "pm2.json" ]

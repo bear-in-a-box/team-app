@@ -1,0 +1,13 @@
+{
+  "name": "@team-app/shared-utils",
+  "version": "0.0.0",
+  "main": "lib/shared-utils.js",
+  "types": "lib/shared-utils.d.ts",
+  "scripts": {
+    "clean": "rm -rf \"./{lib,node_modules}\"",
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "start": "node lib/api.js",
+    "test": "jest --passWithNoTests"
+  }
+}
