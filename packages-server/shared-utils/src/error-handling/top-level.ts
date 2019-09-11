@@ -6,6 +6,7 @@ function topLevelErrorHandler(error: Error) {
   } else {
     console.trace(error);
   }
+  process.exit(1);
 }
 
 function registerTopLevelErrorHandler(process: NodeJS.Process) {

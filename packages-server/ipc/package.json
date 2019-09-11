@@ -1,0 +1,19 @@
+{
+  "name": "@team-app/ipc",
+  "version": "0.0.0",
+  "main": "lib/ipc.js",
+  "types": "lib/ipc.d.ts",
+  "scripts": {
+    "clean": "rm -rf \"./{lib,node_modules}\"",
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "start": "node lib/ipc.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "bull": "^3.10.0"
+  },
+  "devDependencies": {
+    "@types/bull": "^3.10.2"
+  }
+}

@@ -14,6 +14,21 @@
       "env_production": {
         "NODE_ENV": "production"
       }
+    },
+    {
+      "name": "data",
+      "cwd": "packages-server/data",
+      "script": "./lib/data.js",
+      "kill_timeout": 3000,
+      "restart_delay": 3000,
+      "exec_mode": "cluster_mode",
+      "instances": 2,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
     }
   ]
 }

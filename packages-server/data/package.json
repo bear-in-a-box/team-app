@@ -1,0 +1,19 @@
+{
+  "name": "@team-app/data",
+  "version": "0.0.0",
+  "main": "lib/data.js",
+  "types": "lib/data.d.ts",
+  "scripts": {
+    "clean": "rm -rf \"./{lib,node_modules}\"",
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "start": "node lib/data.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@team-app/shared-utils": "^0.0.0",
+    "pg": "^7.12.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.18"
+  }
+}
