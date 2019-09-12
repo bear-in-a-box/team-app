@@ -11,6 +11,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@team-app/ipc": "^0.0.0",
     "@team-app/shared-utils": "^0.0.0",
     "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",

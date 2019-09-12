@@ -44,12 +44,9 @@ services:
       dockerfile: server.Dockerfile
     env_file:
       - ormconfig.env
+      - ipcconfig.env
     environment:
       API_PORT: 3000
-      DATA_REDIS_HOST: redis
-      DATA_REDIS_PORT: 6379
-      DATA_REDIS_USER: redis
-      DATA_REDIS_PASS: redis
     ports:
       - 3000:3000
     depends_on:

@@ -11,6 +11,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@team-app/shared-utils": "^0.0.0",
     "bull": "^3.10.0"
   },
   "devDependencies": {
