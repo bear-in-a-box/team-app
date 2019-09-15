@@ -29,7 +29,6 @@ class BullMessageBus extends BaseMessageBus {
   }
 
   async postAndWait<Data, Returns>(task: Task<Data>): Promise<Returns> {
-    console.log('postAndWait');
     const job = await this.queue.add(
       task,
       {
@@ -37,13 +36,9 @@ class BullMessageBus extends BaseMessageBus {
         removeOnFail: true
       }
     );
-    console.log('waiting for finish');
     await job.finished();
-    console.log('finished');
     const { returnvalue } = await this.queue.getJob(job.id);
-    console.log('got result', returnvalue);
     job.remove();
-    console.log('requested removal');
     return returnvalue as Returns;
   }
 }

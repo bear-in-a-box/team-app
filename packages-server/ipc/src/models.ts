@@ -3,8 +3,7 @@ export interface Task<T> {
   data: T;
 }
 
-export type MessageHandler<T = any, U = any> =
-  ((task: Task<T>) => Promise<U>);
+export type MessageHandler<T = any, U = any> = (task: Task<T>) => Promise<U>;
 
 export interface MessageBusInterface {
   post<Data>(task: Task<Data>): void;

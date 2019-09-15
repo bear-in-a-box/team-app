@@ -7,9 +7,10 @@
       "kill_timeout": 3000,
       "restart_delay": 3000,
       "exec_mode": "cluster_mode",
-      "instances": 2,
+      "instances": 4,
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "NODE_OPTIONS": "--inspect-brk --inspect-port=9230"
       },
       "env_production": {
         "NODE_ENV": "production"
@@ -22,9 +23,10 @@
       "kill_timeout": 3000,
       "restart_delay": 3000,
       "exec_mode": "cluster_mode",
-      "instances": 2,
+      "instances": 4,
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "NODE_OPTIONS": "--inspect-brk --inspect-port=9230"
       },
       "env_production": {
         "NODE_ENV": "production"

@@ -1,0 +1,13 @@
+{
+  "name": "@team-app/models",
+  "version": "0.0.0",
+  "main": "lib/models.js",
+  "types": "lib/models.d.ts",
+  "scripts": {
+    "clean": "rm -rf \"./{lib,node_modules}\"",
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "start": "node lib/models.js",
+    "test": "exit 0"
+  }
+}
