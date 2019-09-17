@@ -12,7 +12,7 @@ class BullMessageBus extends BaseMessageBus {
   }
 
   defineHandler<TaskType>(handler) {
-    this.handler = handler;
+    super.defineHandler(handler);
     this.queue.process(
       job => this.handler(job.data as Task<TaskType>)
     );

@@ -35,7 +35,7 @@ function createBus(
   handler?: MessageHandler
 ): MessageBusInterface {
   const messageBusInterface = new MessageBus(channelName);
-  if (handler !== null) {
+  if (handler != null) {
     messageBusInterface.defineHandler(handler);
   }
   return messageBusInterface;

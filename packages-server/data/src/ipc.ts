@@ -6,8 +6,8 @@ export function fireQueue() {
     return Promise.resolve(true);
   });
   const options: BusFactoryOptions = {
-    type: BusType.Test,
-    handler
+    type: BusType.Test
   };
-  connectToBus(options);
+  const bus = connectToBus(options);
+  bus.defineHandler(handler);
 }

@@ -31,6 +31,22 @@
       "env_production": {
         "NODE_ENV": "production"
       }
+    },
+    {
+      "name": "executor",
+      "cwd": "packages-server/executor",
+      "script": "./lib/executor.js",
+      "kill_timeout": 3000,
+      "restart_delay": 3000,
+      "exec_mode": "cluster_mode",
+      "instances": 4,
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_OPTIONS": "--inspect-brk --inspect-port=9230"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
     }
   ]
 }
