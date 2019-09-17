@@ -1,8 +1,8 @@
 import { RequestHandler } from 'express';
 
-import { MessageBus } from '@team-app/ipc';
+import { connectToBus, BusType } from '@team-app/ipc';
 
-const messageBus = new MessageBus('test');
+const messageBus = connectToBus({ type: BusType.Test });
 
 export const testIpcHandler: RequestHandler = async (req, res) => {
   const result = await messageBus.postAndWait<string, boolean>(

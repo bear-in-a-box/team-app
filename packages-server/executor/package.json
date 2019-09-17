@@ -1,0 +1,18 @@
+{
+  "name": "@team-app/executor",
+  "version": "0.0.0",
+  "main": "lib/executor.js",
+  "types": "lib/executor.d.ts",
+  "scripts": {
+    "clean": "rm -rf \"./{lib,node_modules}\"",
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "start": "node lib/executor.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@team-app/ipc": "^0.0.0",
+    "@team-app/models": "^0.0.0",
+    "@team-app/shared-utils": "^0.0.0"
+  }
+}
