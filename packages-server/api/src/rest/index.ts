@@ -1,5 +1,9 @@
 import { Express } from 'express';
+import bodyParser from 'body-parser';
+import compression from 'compression';
+
 import { env } from '@team-app/shared-utils';
+
 import { testIpcHandler } from '../test-ipc-handler';
 import { ApiRestActions } from './actions';
 import { actionset } from './actionset';
@@ -16,7 +20,14 @@ function addDebugEndpointsHandlers(app: Express) {
   );
 }
 
+function addGlobalMiddlewares(app: Express) {
+  app.use(compression());
+  app.use(bodyParser.json());
+}
+
 export async function initRestApi(app: Express) {
+  addGlobalMiddlewares(app);
+  
   if (!env.isProduction()) {
     addDebugEndpointsHandlers(app);
   }
