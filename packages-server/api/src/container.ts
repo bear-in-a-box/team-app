@@ -21,7 +21,7 @@ export class ApiContainer {
   }
 
   async prepare(): Promise<this> {
-    if (this.state > ApiContainerState.Fresh) {
+    if (this.state >= ApiContainerState.Prepared) {
       throw new Error('Api container is already prepared');
     }
     
