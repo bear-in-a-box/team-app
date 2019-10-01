@@ -1,12 +1,18 @@
-import { Socket } from "socket.io";
+import { Socket } from 'socket.io';
+import { ApiActions } from '../actions';
 
-export class ApiSocketAction<DataModel = any> {
-  constructor(
-    readonly type: string,
-    readonly handler: (socket: Socket, data: DataModel) => void,
-    readonly allowedInProduction: boolean = false
-  ) {}
+export class ApiSocketActions extends ApiActions<Socket> {
+  bind() {
+    this.actions.forEach(
+      ({ type, handler }) => this.target.on(type, handler)
+    );
+    return this;
+  }
+
+  unbind() {
+    this.actions.forEach(
+      ({ type, handler }) => this.target.off(type, handler)
+    );
+    return this;
+  }
 }
-
-export const actions: Readonly<ApiSocketAction[]> = Object.freeze([
-]);

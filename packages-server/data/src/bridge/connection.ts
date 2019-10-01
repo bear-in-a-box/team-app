@@ -1,10 +1,9 @@
 import { createConnection, Connection } from 'typeorm';
+import { design } from '@team-app/shared-utils';
 import ormConfig from '../ormconfig';
 
-let connection: Connection = null;
+const ormConnection = new design.Lazy<Connection>(() => createConnection(ormConfig));
 
-export async function getOrmConnection() {
-  return connection != null
-    ? connection
-    : (connection = await createConnection(ormConfig))
+export function getOrmConnection() {
+  return ormConnection.getInstance();
 }
