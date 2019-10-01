@@ -1,18 +1,36 @@
 import { Express } from 'express';
-import { ApiActions, ApiAction } from '../actions';
+import { ApiActions, ApiAction, ApiActionOptions } from '../actions';
 
-type ExpressActionHandler = (req: Express.Request, res: Express.Response) => void;
-type AllowedRestMethods = 'get' | 'post' | 'put' | 'delete';
+type ExpressActionHandler = (req: Express.Request, res: Express.Response, next: () => void) => void;
+type AllowedRestMethod = 'get' | 'post' | 'put' | 'delete';
 
-export class ApiRestAction extends ApiAction<ExpressActionHandler> {
-  constructor(
-    public readonly type: string,
-    public readonly method: AllowedRestMethods,
-    public readonly route: string,
-    public readonly handler: ExpressActionHandler,
-    public readonly allowedInProduction: boolean = true
-  ) {
-    super(type, handler, allowedInProduction);
+interface ApiRestActionOptions extends ApiActionOptions<ExpressActionHandler> {
+  readonly type: string,
+  readonly method: AllowedRestMethod,
+  readonly route: string,
+  readonly handler: ExpressActionHandler,
+  readonly middlewares?: ExpressActionHandler[],
+  readonly allowedInProduction: boolean
+}
+
+export class ApiRestAction extends ApiAction<ExpressActionHandler> implements ApiRestActionOptions {
+  readonly method: AllowedRestMethod;
+  readonly route: string;
+  readonly middlewares: ExpressActionHandler[];
+  
+  constructor({
+    type,
+    method = 'get',
+    route,
+    handler,
+    middlewares = [],
+    allowedInProduction = true
+  }: ApiRestActionOptions) {
+    super({ type, handler, allowedInProduction });
+    
+    this.method = method;
+    this.route = route;
+    this.middlewares = [...middlewares];
   }
 }
 
@@ -20,7 +38,7 @@ export class ApiRestAction extends ApiAction<ExpressActionHandler> {
 export class ApiRestActions extends ApiActions<Express, ApiRestAction> {
   bind() {
     this.actions.forEach(
-      ({ route, method, handler }) => this.target[method](route, handler)
+      ({ route, method, middlewares, handler }) => this.target[method](route, ...middlewares, handler)
     )
     return this;
   }

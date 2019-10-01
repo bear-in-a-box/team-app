@@ -1,11 +1,25 @@
 import { env } from '@team-app/shared-utils';
 
-export class ApiAction<Handler extends Function = () => void> {
-  constructor(
-    public readonly type: string,
-    public readonly handler: Handler,
-    public readonly allowedInProduction: boolean = true
-  ) {}
+export interface ApiActionOptions<Handler> {
+  readonly type: string;
+  readonly handler: Handler;
+  readonly allowedInProduction: boolean;
+}
+
+export class ApiAction<Handler extends Function = () => void> implements ApiActionOptions<Handler> {
+  readonly type: string;
+  readonly handler: Handler;
+  readonly allowedInProduction: boolean;
+
+  constructor({
+    type,
+    handler,
+    allowedInProduction = true
+  }: ApiActionOptions<Handler>) {
+    this.type = type;
+    this.handler = handler;
+    this.allowedInProduction = allowedInProduction;
+  }
 }
 
 export abstract class ApiActions<Target, Action extends ApiAction<any> = ApiAction<any>> {
