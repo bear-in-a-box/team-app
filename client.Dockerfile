@@ -3,7 +3,7 @@ FROM node:lts AS stage-build
 WORKDIR /usr/src
 COPY packages-client/client/package.json packages-client/client/yarn.lock packages-client/client/tsconfig.json ./
 RUN yarn global add jest
-RUN yarn
+RUN yarn --pure-lockfile
 COPY packages-client/client/src ./src
 COPY packages-client/client/public ./public
 RUN yarn test

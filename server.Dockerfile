@@ -1,13 +1,13 @@
 FROM keymetrics/pm2:latest-alpine
 
 COPY ./packages-server ./packages-server/
-COPY package.json lerna.json ./
+COPY package.json lerna.json yarn.lock ./
 
 RUN npm install -g yarn
 RUN npm config set unsafe-perm true
 RUN yarn config set unsafe-perm true
 RUN yarn global add typescript lerna typeorm
-RUN yarn
+RUN yarn --pure-lockfile
 RUN lerna bootstrap --hoist
 RUN lerna run test
 RUN yarn config set unsafe-perm false
