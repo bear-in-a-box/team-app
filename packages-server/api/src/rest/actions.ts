@@ -1,16 +1,14 @@
-import { Express } from 'express';
+import { Express, Handler } from 'express';
 import { ApiActions, ApiAction, ApiActionOptions } from '../actions';
 
-type ExpressActionHandler = (req: Express.Request, res: Express.Response, next: () => void) => void;
+type ExpressActionHandler = Handler;
 type AllowedRestMethod = 'get' | 'post' | 'put' | 'delete';
 
 interface ApiRestActionOptions extends ApiActionOptions<ExpressActionHandler> {
-  readonly type: string,
-  readonly method: AllowedRestMethod,
+  readonly method?: AllowedRestMethod,
   readonly route: string,
   readonly handler: ExpressActionHandler,
   readonly middlewares?: ExpressActionHandler[],
-  readonly allowedInProduction: boolean
 }
 
 export class ApiRestAction extends ApiAction<ExpressActionHandler> implements ApiRestActionOptions {

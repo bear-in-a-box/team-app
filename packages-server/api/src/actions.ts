@@ -3,7 +3,7 @@ import { env } from '@team-app/shared-utils';
 export interface ApiActionOptions<Handler> {
   readonly type: string;
   readonly handler: Handler;
-  readonly allowedInProduction: boolean;
+  readonly allowedInProduction?: boolean;
 }
 
 export class ApiAction<Handler extends Function = () => void> implements ApiActionOptions<Handler> {
